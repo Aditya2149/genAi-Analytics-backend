@@ -14,12 +14,7 @@ class QueryService {
       throw new Error('Unsupported query type');
     }
 
-    return new Promise((resolve, reject) => {
-      db.all(sqlQuery, (err, rows) => {
-        if (err) return reject(err);
-        resolve({ question, sqlQuery, explanation, result: rows });
-      });
-    });
+    return { question, sqlQuery, explanation };
   }
 
   static validateQuery(question) {
